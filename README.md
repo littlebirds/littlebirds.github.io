@@ -1,2 +1,2 @@
-# littlebirds Study Notes
+# Study Notes
   ## advanced data structures /algorithms 
