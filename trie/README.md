@@ -4,3 +4,4 @@ Advantage of tries over hash table:
 - No need for hash function.
 - Supports ordered traversal.
 - You can quickly lookup prefixes of keys, enumerate all entires with a given prefix etc.
+- If there are many common prefixes, the space required is shared.
