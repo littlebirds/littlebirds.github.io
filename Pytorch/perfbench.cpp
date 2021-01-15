@@ -159,10 +159,7 @@ int main(int argc, const char *argv[])
   auto custom_dataset = CustomDataset(list_images, list_labels)
                             .map(torch::data::transforms::Normalize<>({0.485, 0.456, 0.406}, {0.229, 0.224, 0.225}))
                             .map(torch::data::transforms::Stack<>()); // batch samplings into 1 tensor
-  // Generate a data loader.
-  //auto data_loader = torch::data::make_data_loader<torch::data::samplers::SequentialSampler>(
-  //  std::move(custom_dataset),
-  //  16 /*batch-size*/);
+ 
   auto data_loader = torch::data::make_data_loader(std::move(custom_dataset),
                                                    torch::data::DataLoaderOptions().batch_size(16).workers(6));
   float Loss = 0, Acc = 0;
@@ -187,7 +184,5 @@ int main(int argc, const char *argv[])
   auto stop = std::chrono::high_resolution_clock::now();
   using namespace std::chrono;
   auto duration = duration_cast<microseconds>(stop - start);
-  cout << "Total time:" << duration.count() << endl;
-  //print('correct: {:d}  total: {:d}'.format(correct, total))
-  // print('accuracy = {:f}'.format(correct / total))
+  cout << "Total time:" << duration.count() << endl; 
 }
